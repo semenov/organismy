@@ -1,0 +1,16 @@
+<%= render @post %>
+<a name="replies"></a>
+<h3>Ответы</h3>
+<div class="comments">
+  <%= render @comments %>
+</div>
+
+
+<div class="reply">
+  <% link_to(new_comment_path(:post_id => @post.id), :class => 'reply-link', :id => "reply-0") do %>
+    <%= image_tag 'comment.png' %> Ответить на публикацию
+  <% end %>
+  <%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
+</div>
+
+

@@ -1,0 +1,18 @@
+<div class="categories">
+<% @categories.each do |category| %>
+  <div class="category">
+    <h3>
+      <%= link_to h(category.title), category %>
+      <% link_to(edit_category_path(category)) do %>
+        <%= image_tag 'edit.png', :title => 'Править'%>
+      <% end %>
+      <% link_to(category, :confirm => 'Are you sure?', :method => :delete) do %>
+        <%= image_tag 'delete.png', :title => 'Уничтожить'%>
+      <% end %>      
+    </h3>
+    <div class="description"><%=h category.description %></div>
+  </div>
+<% end %>
+</div>
+
+<%= link_to 'Создать поток', new_category_path %>

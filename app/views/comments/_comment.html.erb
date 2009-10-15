@@ -1,0 +1,16 @@
+<div class="comment voteable" id="comment-<%= comment.id %>" style="padding-left: <%= 2 * (comment.level + 1) %>em">
+  <a name="reply-<%= comment.id %>"></a>
+  <div class="meta">
+    <%= render comment.user %>
+    <%= link_to '#', post_path(comment.commentable_id, :anchor => "reply-#{comment.id}") %>
+    <div class="vote-widget">
+      <%= render :partial => 'shared/vote_widget', :locals => { :voteable => comment } %>
+    </div>
+  </div>
+  <div class="body"><%= comment.body %></div>
+  <div class="reply">
+    <%= link_to 'Ответить', 
+          new_comment_path(:post_id => comment.commentable_id, :parent_id => comment.id),
+          :class => 'reply-link', :id => "id-#{comment.id}" %>
+  </div>
+</div>

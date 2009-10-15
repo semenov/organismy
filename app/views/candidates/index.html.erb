@@ -1,0 +1,22 @@
+<h1>Listing candidates</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Description</th>
+  </tr>
+
+<% @candidates.each do |candidate| %>
+  <tr>
+    <td><%=h candidate.email %></td>
+    <td><%=h candidate.description %></td>
+    <td><%= link_to 'Show', candidate %></td>
+    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+    <td><%= link_to 'Destroy', candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New candidate', new_candidate_path %>

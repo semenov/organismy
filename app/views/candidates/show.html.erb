@@ -1,0 +1,13 @@
+<p>
+  <b>Email:</b>
+  <%=h @candidate.email %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @candidate.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>

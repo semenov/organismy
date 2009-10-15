@@ -1,0 +1,34 @@
+<div class="post voteable" id="post-<%= post.id %>"> 
+  <h2>
+    <%= link_to_unless_current h(post.title), post %>
+    <sup>[<%= link_to h(post.category.title), post.category %>]</sup>
+  </h2>
+
+  <div class="content">
+    <%= simple_format post.body %>
+  </div>
+  <div class="meta">
+    <div class="author">
+      <%= render post.user %>
+    </div>      
+    <div class="vote-widget">
+      <%= render :partial => 'shared/vote_widget', :locals => { :voteable => post } %>
+    </div>
+
+    <div class="comments">
+      <% link_to post_path(post, :anchor => 'replies'), :title => 'Ответы' do %>
+        <%= image_tag 'comment.png' %>
+        <%= post.comment_threads.count %>
+      <% end %>
+    </div>
+      
+    <div class="admin">
+      <% link_to(edit_post_path(post)) do %>
+        <%= image_tag 'edit.png', :title => 'Править'%>
+      <% end %>
+      <% link_to(post, :confirm => 'Are you sure?', :method => :delete) do %>
+        <%= image_tag 'delete.png', :title => 'Уничтожить'%>
+      <% end %>      
+    </div>    
+  </div>
+</div> 

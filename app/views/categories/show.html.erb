@@ -1,0 +1,12 @@
+<div class="category">
+<h1><%= h(@category.title) %></h1>
+<p><%=h @category.description %></p>
+<div class="admin_controls">
+  <%= link_to 'Поправить', edit_category_path(@category) %>
+  <%= link_to 'Уничтожить', @category, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+</div>
+
+<%= render @posts %>
+
+<%= will_paginate @posts %>

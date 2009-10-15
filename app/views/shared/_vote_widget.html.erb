@@ -1,0 +1,12 @@
+<% if voteable.user_id == current_user.id %>
+  <%= image_tag 'heart_inactive.png', :class => 'star', :title => 'Нельзя голосовать за своё.' %>
+  <%= voteable.number_of_votes_for %>
+<% elsif voteable.voted_by?(current_user) %>
+  <%= image_tag 'heart_active.png', :class => 'star' %>
+  <%= voteable.number_of_votes_for %>
+<% else %>
+  <% link_to(vote_path(:id => voteable.id, :type => voteable.class.name.downcase), :class => 'vote-link') do %>
+    <%= image_tag 'heart.png', :class => 'star', :title => 'Нраавица!' %>
+    <%= voteable.number_of_votes_for %>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<div id="comment-form">
+<%= render current_user %> хочет сказать следующее:
+<% form_for(comment) do |f| %>
+  <%= f.error_messages %>
+    <%= f.text_area :body %>
+    <%= f.hidden_field :commentable_id %>
+    <%= f.hidden_field :parent_id, :id => 'comment-parent-id' %>
+    <br />
+    <%= f.submit 'Сказать' %>
+<% end %>
+</div>
